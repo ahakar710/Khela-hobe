@@ -1,32 +1,46 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    function signedIn() { return request.auth != null; }
-    function isAdmin() { return signedIn() && request.auth.token.admin == true; }
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return signedIn() && request.auth.token.admin == true;
+    }
 
     match /profiles/{uid} {
       allow read: if signedIn() && (request.auth.uid == uid || isAdmin());
       allow create: if signedIn() && request.auth.uid == uid;
-      allow update: if signedIn() && request.auth.uid == uid
+      allow update: if signedIn()
+        && request.auth.uid == uid
         && !request.resource.data.diff(resource.data).affectedKeys()
-          .hasAny(['coins','role','banned','admin']);
+          .hasAny(['coins', 'role', 'banned', 'admin']);
       allow delete: if isAdmin();
     }
+
     match /rooms/{roomId} {
       allow read: if signedIn();
-      allow write: if false; // Use callable Cloud Functions for room mutations.
+      allow write: if false;
     }
+
+    match /roomCodes/{code} {
+      allow read, write: if false;
+    }
+
     match /matches/{matchId} {
       allow read: if signedIn();
-      allow write: if false; // Server-authoritative match results only.
+      allow write: if false;
     }
+
     match /announcements/{id} {
       allow read: if true;
       allow write: if isAdmin();
     }
+
     match /adminAudit/{id} {
       allow read: if isAdmin();
-      allow write: if false; // Server-only audit records.
+      allow write: if false;
     }
   }
 }
