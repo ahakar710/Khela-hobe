@@ -10,12 +10,12 @@ import {
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "YOUR_FIREBASE_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyAbYOONLiGY_I3kz8F9K3iX_zJXx2-lSzI",
+  authDomain: "khela-hobe-9d39b.firebaseapp.com",
+  projectId: "khela-hobe-9d39b",
+  storageBucket: "khela-hobe-9d39b.firebasestorage.app",
+  messagingSenderId: "427181263995",
+  appId: "1:427181263995:web:e66d07054750cd226526de"
 };
 
 export const firebaseConfigured = !Object.values(firebaseConfig)
