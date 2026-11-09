@@ -1,0 +1,6 @@
+{
+  "appId": "com.khelahobe.game",
+  "appName": "Khela Hobe",
+  "webDir": "dist",
+  "server": { "androidScheme": "https" }
+}

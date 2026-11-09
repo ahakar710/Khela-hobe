@@ -1,0 +1,46 @@
+ANDROID PHONE-ONLY GUIDE (সহজ ধাপ)
+=================================
+এই ZIP source code। এটি নিজে থেকে APK নয়।
+
+A. ফাইল খোলা
+1. ZIP extract করুন।
+2. Khela_Hobe_All_In_One ফোল্ডারের সব ফাইল রাখুন।
+3. GitHub account থাকলে private repository তৈরি করে source upload করতে পারেন।
+
+B. Web preview/build
+1. এমন cloud coding workspace খুলুন যেখানে Node.js 20+ Terminal পাওয়া যায়।
+2. project folder-এ Terminal খুলুন।
+3. npm install
+4. npm run dev
+5. Preview URL খুলে app দেখুন।
+6. Build check: npm run build
+
+C. Firebase online setup
+1. Firebase Console-এ project তৈরি।
+2. Web App register।
+3. src/firebase.js-এ config বসান।
+4. Authentication: Anonymous ও Email/Password enable।
+5. Firestore create।
+6. Firebase CLI দিয়ে rules/functions deploy।
+7. Hosting deploy: npm run build; firebase deploy --only hosting
+
+D. Android APK
+1. npm run build
+2. npx cap add android (শুধু প্রথমবার)
+3. npx cap sync android
+4. Android SDK/Gradle-সহ cloud build বা PC environment-এ android folder build করুন।
+5. Debug APK তৈরি করে নিজের ফোনে পরীক্ষা করুন।
+6. Release signing key নিরাপদে রাখুন; কাউকে পাঠাবেন না।
+
+E. আগে যেগুলো যাচাই করবেন
+- Login/logout
+- ছোট স্ক্রিনে UI
+- Ludo dice/token edge cases
+- Room create/join permission
+- Firestore rules unauthorized access
+- Admin custom claim
+- Microphone permission, mute, leave, TURN relay
+- Network drop/reconnect
+- Multiple phones simultaneous test
+
+সমস্যা হলে error message বা screenshot পাঠান; আমি ধাপে ধাপে বুঝিয়ে দেব।
